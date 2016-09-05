@@ -1,0 +1,120 @@
+﻿
+
+@section scripts {
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="~/Scripts/highcharts.js"></script>
+    <script src="~/Scripts/exporting.js"></script>
+    @*<style type="text/css">
+            ${demo.css}
+        </style>*@
+    <script type="text/javascript">
+        var chart;
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                url: 'Home/GetReadings',
+                dataType: "json",
+                contentType: "application/json",
+                crossDomain: true,
+                success: function (data) {
+                    console.log(data);
+
+                    // Populate series
+                    var processed_json = new Array();
+                    for (i = 0; i < data.length; i++) {
+                        processed_json.push([data[i].Time, parseInt(data[i].Temp)]);
+                    }
+
+                    // draw chart
+                    $('#container').highcharts({
+                        chart: {
+                            type: "spline"
+                        },
+                        title: {
+                            text: "Temperature"
+                        },
+                        xAxis: {
+                            allowDecimals: false,
+                            title: {
+                                text: "Time"
+                            }
+                        },
+                        yAxis: {
+                            title: {
+                                text: "Temp"
+                            }
+                        },
+                        series: [{
+                            data: processed_json
+                        }]
+                    });
+                }
+            });
+
+
+            $.ajax({
+                type: "POST",
+                url: 'Home/GetPressureReadings',
+                dataType: "json",
+                contentType: "application/json",
+                crossDomain: true,
+                success: function (data) {
+                    console.log(data);
+
+                    // Populate series
+                    var processed_json = new Array();
+                    for (i = 0; i < data.length; i++) {
+                        processed_json.push([data[i].Time, parseInt(data[i].Pressure)]);
+                    }
+
+                    // draw chart
+                    $('#PressureContainer').highcharts({
+                        chart: {
+                            type: "spline"
+                        },
+                        title: {
+                            text: "Pressure"
+                        },
+                        xAxis: {
+                            allowDecimals: false,
+                            title: {
+                                text: "Time"
+                            }
+                        },
+                        yAxis: {
+                            title: {
+                                text: "Pressure"
+                            }
+                        },
+                        series: [{
+                            data: processed_json
+                        }]
+                    });
+                }
+            });
+        });
+    </script>
+
+}
+
+
+
+
+<div id="body">
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Building Energy Monitor</h1>
+            </hgroup>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        <button id="button">Refresh</button>
+
+        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+        <div id="PressureContainer" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+    </section>
+</div>
+

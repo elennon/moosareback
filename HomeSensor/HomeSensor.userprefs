@@ -1,0 +1,21 @@
+﻿<Properties StartupItem="HomeSensor/HomeSensor.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="HomeSensor/Models/Sht15.cs">
+    <Files>
+      <File FileName="HomeSensor/Main.cs" Line="1" Column="1" />
+      <File FileName="HomeSensor/Common.cs" Line="1" Column="1" />
+      <File FileName="HomeSensor/Models/Sht15.cs" Line="15" Column="6" />
+      <File FileName="HomeSensor/Models/Sdp610.cs" Line="33" Column="7" />
+      <File FileName="HomeSensor/Models/Reading.cs" Line="1" Column="1" />
+      <File FileName="HomeSensor/Models/CavityTemp.cs" Line="49" Column="7" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/home/pi/share/HomeSensor/HomeSensor/BMP180.cs" line="64" column="1" />
+      <Breakpoint file="/home/pi/share/HomeSensor/HomeSensor/BMP180.cs" line="70" column="1" />
+      <Breakpoint file="/home/pi/share/HomeSensor/HomeSensor/Models/Sdp610.cs" line="82" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
