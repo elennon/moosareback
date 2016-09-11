@@ -197,6 +197,7 @@
     <Compile Include="Controllers\CavityTempsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MeasurementsController.cs" />
+    <Compile Include="Controllers\MLX906Controller.cs" />
     <Compile Include="Controllers\Sdp610Controller.cs" />
     <Compile Include="Controllers\Sht15Controller.cs" />
     <Compile Include="DAL\IRepository.cs" />
@@ -204,8 +205,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Bmp180.cs" />
     <Compile Include="Models\Readings.cs" />
+    <Compile Include="Models\ReadingContext.cs" />
     <Compile Include="Models\TempVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

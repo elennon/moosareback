@@ -45,7 +45,7 @@ namespace Moosareback.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != sdp610._id)
+            if (id != sdp610.Id)
             {
                 return BadRequest();
             }
@@ -88,7 +88,7 @@ namespace Moosareback.Controllers
             }
             catch (DbUpdateException)
             {
-                if (Sdp610Exists(sdp610._id))
+                if (Sdp610Exists(sdp610.Id))
                 {
                     return Conflict();
                 }
@@ -98,7 +98,7 @@ namespace Moosareback.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = sdp610._id }, sdp610);
+            return CreatedAtRoute("DefaultApi", new { id = sdp610.Id }, sdp610);
         }
 
         // DELETE: api/Sdp610/5
@@ -128,7 +128,7 @@ namespace Moosareback.Controllers
 
         private bool Sdp610Exists(Guid id)
         {
-            return db.Sdp610.Count(e => e._id == id) > 0;
+            return db.Sdp610.Count(e => e.Id == id) > 0;
         }
     }
 }

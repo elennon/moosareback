@@ -45,7 +45,7 @@ namespace Moosareback.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != sht15._id)
+            if (id != sht15.Id)
             {
                 return BadRequest();
             }
@@ -88,7 +88,7 @@ namespace Moosareback.Controllers
             }
             catch (DbUpdateException)
             {
-                if (Sht15Exists(sht15._id))
+                if (Sht15Exists(sht15.Id))
                 {
                     return Conflict();
                 }
@@ -98,7 +98,7 @@ namespace Moosareback.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = sht15._id }, sht15);
+            return CreatedAtRoute("DefaultApi", new { id = sht15.Id }, sht15);
         }
 
         // DELETE: api/Sht15/5
@@ -128,7 +128,7 @@ namespace Moosareback.Controllers
 
         private bool Sht15Exists(Guid id)
         {
-            return db.Sht15.Count(e => e._id == id) > 0;
+            return db.Sht15.Count(e => e.Id == id) > 0;
         }
     }
 }

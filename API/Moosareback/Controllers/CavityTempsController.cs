@@ -45,7 +45,7 @@ namespace Moosareback.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != cavityTemp._id)
+            if (id != cavityTemp.Id)
             {
                 return BadRequest();
             }
@@ -88,7 +88,7 @@ namespace Moosareback.Controllers
             }
             catch (DbUpdateException)
             {
-                if (CavityTempExists(cavityTemp._id))
+                if (CavityTempExists(cavityTemp.Id))
                 {
                     return Conflict();
                 }
@@ -98,7 +98,7 @@ namespace Moosareback.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = cavityTemp._id }, cavityTemp);
+            return CreatedAtRoute("DefaultApi", new { id = cavityTemp.Id }, cavityTemp);
         }
 
         // DELETE: api/CavityTemps/5
@@ -128,7 +128,7 @@ namespace Moosareback.Controllers
 
         private bool CavityTempExists(Guid id)
         {
-            return db.CavityTemps.Count(e => e._id == id) > 0;
+            return db.CavityTemps.Count(e => e.Id == id) > 0;
         }
     }
 }

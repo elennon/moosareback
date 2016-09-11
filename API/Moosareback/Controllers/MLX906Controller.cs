@@ -13,44 +13,44 @@ using Moosareback.Models;
 
 namespace Moosareback.Controllers
 {
-    public class Bmp180Controller : ApiController
+    public class MLX906Controller : ApiController
     {
         private ReadingsContext db = new ReadingsContext();
 
-        // GET: api/Bmp180
-        public IQueryable<Bmp180> GetBmp180()
+        // GET: api/MLX906
+        public IQueryable<MLX906> GetMLX906()
         {
-            return db.Bmp180;
+            return db.MLX906;
         }
 
-        // GET: api/Bmp180/5
-        [ResponseType(typeof(Bmp180))]
-        public async Task<IHttpActionResult> GetBmp180(string id)
+        // GET: api/MLX906/5
+        [ResponseType(typeof(MLX906))]
+        public async Task<IHttpActionResult> GetMLX906(Guid id)
         {
-            Bmp180 bmp180 = await db.Bmp180.FindAsync(id);
-            if (bmp180 == null)
+            MLX906 mLX906 = await db.MLX906.FindAsync(id);
+            if (mLX906 == null)
             {
                 return NotFound();
             }
 
-            return Ok(bmp180);
+            return Ok(mLX906);
         }
 
-        // PUT: api/Bmp180/5
+        // PUT: api/MLX906/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutBmp180(Guid id, Bmp180 bmp180)
+        public async Task<IHttpActionResult> PutMLX906(Guid id, MLX906 mLX906)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != bmp180.Id)
+            if (id != mLX906.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(bmp180).State = EntityState.Modified;
+            db.Entry(mLX906).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace Moosareback.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!Bmp180Exists(id))
+                if (!MLX906Exists(id))
                 {
                     return NotFound();
                 }
@@ -71,24 +71,24 @@ namespace Moosareback.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Bmp180
-        [ResponseType(typeof(Bmp180))]
-        public async Task<IHttpActionResult> PostBmp180(Bmp180 bmp180)
+        // POST: api/MLX906
+        [ResponseType(typeof(MLX906))]
+        public async Task<IHttpActionResult> PostMLX906(MLX906 mLX906)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Bmp180.Add(bmp180);
+            db.MLX906.Add(mLX906);
 
             try
             {
                 await db.SaveChangesAsync();
             }
-            catch (DbUpdateException ex)
+            catch (DbUpdateException)
             {
-                if (Bmp180Exists(bmp180.Id))
+                if (MLX906Exists(mLX906.Id))
                 {
                     return Conflict();
                 }
@@ -98,23 +98,23 @@ namespace Moosareback.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = bmp180.Id }, bmp180);
+            return CreatedAtRoute("DefaultApi", new { id = mLX906.Id }, mLX906);
         }
 
-        // DELETE: api/Bmp180/5
-        [ResponseType(typeof(Bmp180))]
-        public async Task<IHttpActionResult> DeleteBmp180(string id)
+        // DELETE: api/MLX906/5
+        [ResponseType(typeof(MLX906))]
+        public async Task<IHttpActionResult> DeleteMLX906(Guid id)
         {
-            Bmp180 bmp180 = await db.Bmp180.FindAsync(id);
-            if (bmp180 == null)
+            MLX906 mLX906 = await db.MLX906.FindAsync(id);
+            if (mLX906 == null)
             {
                 return NotFound();
             }
 
-            db.Bmp180.Remove(bmp180);
+            db.MLX906.Remove(mLX906);
             await db.SaveChangesAsync();
 
-            return Ok(bmp180);
+            return Ok(mLX906);
         }
 
         protected override void Dispose(bool disposing)
@@ -126,9 +126,9 @@ namespace Moosareback.Controllers
             base.Dispose(disposing);
         }
 
-        private bool Bmp180Exists(Guid id)
+        private bool MLX906Exists(Guid id)
         {
-            return db.Bmp180.Count(e => e.Id == id) > 0;
+            return db.MLX906.Count(e => e.Id == id) > 0;
         }
     }
 }
